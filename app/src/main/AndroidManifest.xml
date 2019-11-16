@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FeedActivity"></activity>
+        <activity android:name=".ProfilActivity"></activity>
+        <activity android:name=".ExpenseActivity" />
+        <activity android:name=".AddActivity" />
+        <activity android:name=".FeedActivity" />
         <activity android:name=".SignActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
