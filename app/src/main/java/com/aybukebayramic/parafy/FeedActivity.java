@@ -26,7 +26,7 @@ import java.util.Map;
      public class FeedActivity extends AppCompatActivity {
 
         private FirebaseAuth firebaseAuth;
-        private FirebaseFirestore firebaseFirestore;
+
 
     @Override
         public boolean onCreateOptionsMenu(Menu menu) {
@@ -70,30 +70,10 @@ import java.util.Map;
                 super.onCreate(savedInstanceState);
                 setContentView(R.layout.activity_feed);
                 firebaseAuth=FirebaseAuth.getInstance();
-                firebaseFirestore=FirebaseFirestore.getInstance();
 
-                getDataFromFirestore();
+
+
     }
-        public void getDataFromFirestore (){
-            CollectionReference collectionReference=firebaseFirestore.collection("Expenses");
-            collectionReference.orderBy("date", Query.Direction.DESCENDING).addSnapshotListener(new EventListener<QuerySnapshot>() {
-                @Override
-                public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
-                if(e!=null) {
-                    Toast.makeText(FeedActivity.this,e.getLocalizedMessage().toString(),Toast.LENGTH_LONG).show();
-                }
 
-                if (queryDocumentSnapshots!=null) {
-                    for(DocumentSnapshot snapshot:queryDocumentSnapshots.getDocuments()) {
-                       Map<String,Object> data= snapshot.getData();
-                       String comment= (String) data.get("comment");
-                       String userEmail=(String) data.get("useremail");
-                       String downloadUrl= (String) data.get("downloadurl");
-                        System.out.println(comment);
-                    }
-                }
-                }
-            });
-        }
 
 }

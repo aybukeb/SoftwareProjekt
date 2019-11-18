@@ -35,6 +35,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.UUID;
 
+import io.grpc.Context;
+
 public class AddActivity extends AppCompatActivity {
     Bitmap selectedImage;
     ImageView imageView;
@@ -56,53 +58,62 @@ public class AddActivity extends AppCompatActivity {
         storageReference=firebaseStorage.getReference();
         firebaseFirestore=FirebaseFirestore.getInstance();
         firebaseAuth=FirebaseAuth.getInstance();
+
+
     }
-    public void add(View view) {
-        if(imageData!=null) {
+        public void add (View view) {
+        if (imageData!=null) {
 
             UUID uuid=UUID.randomUUID();
-            final String imageName="images/" +uuid + ".jpg";
+            final String imageName = "/images" + uuid +".jpg";
             storageReference.child(imageName).putFile(imageData).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                StorageReference newReference=FirebaseStorage.getInstance().getReference(imageName);
-                newReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                    @Override
-                    public void onSuccess(Uri uri) {
-                    String downloadUrl=uri.toString();
+
+                    StorageReference newReference = FirebaseStorage.getInstance().getReference(imageName);
+                    newReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                        String downloadUrl= uri.toString();
+
                         FirebaseUser firebaseUser=firebaseAuth.getCurrentUser();
                         String userEmail=firebaseUser.getEmail();
+
                         String comment=commentText.getText().toString();
 
-                        HashMap<String,Object> expenseData=new HashMap<>();
+                        HashMap<String, Object>  expenseData=new HashMap<>();
                         expenseData.put("useremail",userEmail);
                         expenseData.put("downloadurl",downloadUrl);
                         expenseData.put("comment",comment);
-                        expenseData.put("date", FieldValue.serverTimestamp());
-                        firebaseFirestore.collection("Expenses").add(expenseData).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                            @Override
-                            public void onSuccess(DocumentReference documentReference) {
-                            Intent intent =new Intent(AddActivity.this,FeedActivity.class);
-                            intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            startActivity(intent);
-                            }
-                        }).addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(AddActivity.this,e.getLocalizedMessage().toString(),Toast.LENGTH_LONG).show();
-                            }
-                        });
+                        expenseData.put("date",FieldValue.serverTimestamp());
 
-                    }
-                });
+                         firebaseFirestore.collection("Expenses").add(expenseData).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                             @Override
+                             public void onSuccess(DocumentReference documentReference) {
+                                 Intent intent=new Intent(AddActivity.this,FeedActivity.class);
+                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                 startActivity(intent);
+
+                             }
+                         }).addOnFailureListener(new OnFailureListener() {
+                             @Override
+                             public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(AddActivity.this,e.getLocalizedMessage().toString(),Toast.LENGTH_LONG).show();
+                             }
+                         });
+                        }
+                    });
+
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(AddActivity.this,e.getLocalizedMessage().toString(),Toast.LENGTH_LONG).show();
+                Toast.makeText(AddActivity.this,e.getLocalizedMessage().toString(),Toast.LENGTH_LONG).show();
                 }
             });
+
         }
+
 
     }
     public void selectImage(View view) {
