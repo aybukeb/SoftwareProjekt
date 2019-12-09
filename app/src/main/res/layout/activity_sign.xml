@@ -9,15 +9,17 @@
     <EditText
         android:id="@+id/emailText"
         android:layout_width="0dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="33dp"
-        android:layout_marginTop="66dp"
-        android:layout_marginEnd="33dp"
-        android:layout_marginBottom="77dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="178dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginBottom="17dp"
         android:ems="10"
-        android:hint="e-mail adress"
+        android:hint="mail adresi"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="@+id/passwordText"
+        android:textColor="#ffffff"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/passwordText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,37 +27,62 @@
     <EditText
         android:id="@+id/passwordText"
         android:layout_width="0dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="33dp"
-        android:layout_marginTop="143dp"
-        android:layout_marginEnd="33dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginBottom="25dp"
         android:ems="10"
-        android:hint="password"
+        android:hint="parola"
         android:inputType="textPassword"
+        android:textColor="#ffffff"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/emailText" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_width="250dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="130dp"
+        android:background="@drawable/ovalbuton"
+        android:backgroundTint="#D488EC"
         android:onClick="signinClicked"
-        android:text="SIGN IN "
-        app:layout_constraintBottom_toBottomOf="@+id/button2"
+        android:text="GİRİŞ YAP"
+        android:textColor="#ffffff"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button2"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
         android:id="@+id/button2"
+        android:layout_width="250dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="18dp"
+        android:background="@drawable/ovalbuton"
+        android:backgroundTint="#D488EC"
+        android:onClick="signupClicked"
+        android:text="KAYDOL"
+        android:textColor="#ffffff"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordText" />
+
+
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="61dp"
-        android:layout_marginEnd="43dp"
-        android:onClick="signupClicked"
-        android:text="SIGN UP"
+        android:layout_marginBottom="16dp"
+        android:text="zaten kayıtlıysan"
+        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordText" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

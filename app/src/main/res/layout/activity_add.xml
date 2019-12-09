@@ -8,39 +8,50 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="76dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="61dp"
-        android:layout_marginTop="127dp"
-        android:layout_marginBottom="54dp"
+        android:layout_width="59dp"
+        android:layout_height="56dp"
         android:onClick="selectImage"
-        app:layout_constraintBottom_toTopOf="@+id/commentText"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_input_add" />
+        app:srcCompat="@android:drawable/ic_input_add"
+        tools:layout_editor_absoluteX="48dp"
+        tools:layout_editor_absoluteY="244dp" />
 
     <EditText
         android:id="@+id/commentText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="63dp"
-        android:layout_marginBottom="72dp"
         android:ems="10"
-        android:hint="enter comment"
+        android:hint="yorum yaz"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        tools:layout_editor_absoluteX="121dp"
+        tools:layout_editor_absoluteY="331dp" />
 
     <Button
         android:id="@+id/button3"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:background="@drawable/ovalbuton"
+        android:onClick="add"
+        android:text="Ekle"
+        android:textColor="#ffffff"
+        tools:layout_editor_absoluteX="116dp"
+        tools:layout_editor_absoluteY="410dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:text="fotoğraf ekle"
+        tools:layout_editor_absoluteX="120dp"
+        tools:layout_editor_absoluteY="260dp" />
+
+    <EditText
+        android:id="@+id/editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginBottom="193dp"
-        android:onClick="add"
-        android:text="Add"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/commentText" />
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="try"
+        tools:layout_editor_absoluteX="116dp"
+        tools:layout_editor_absoluteY="177dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
