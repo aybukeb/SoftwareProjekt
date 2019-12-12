@@ -18,6 +18,7 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -53,6 +54,10 @@ public class AddActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add);
         imageView=findViewById(R.id.imageView2);
         commentText=findViewById(R.id.commentText);
+        TextView catnameText=findViewById(R.id.catnameText);
+        Intent intent=getIntent();
+        String catName=intent.getStringExtra("name");
+        catnameText.setText(catName);
 
         firebaseStorage=FirebaseStorage.getInstance();
         storageReference=firebaseStorage.getReference();
@@ -123,6 +128,14 @@ public class AddActivity extends AppCompatActivity {
             Intent intentToGallery=new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             startActivityForResult(intentToGallery,2);
         }
+    }
+    public void addCategory(View view) {
+
+        Intent intent=new Intent(AddActivity.this,CategoryActivity.class);
+        startActivity(intent);
+
+
+
     }
 
     @Override
