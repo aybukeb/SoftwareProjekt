@@ -42,6 +42,8 @@ public class AddActivity extends AppCompatActivity {
     Bitmap selectedImage;
     ImageView imageView;
     EditText commentText;
+    EditText amountText;
+    TextView catnameText;
     private FirebaseStorage firebaseStorage;
     private StorageReference storageReference;
     Uri imageData;
@@ -52,9 +54,12 @@ public class AddActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
+
         imageView=findViewById(R.id.imageView2);
         commentText=findViewById(R.id.commentText);
-        TextView catnameText=findViewById(R.id.catnameText);
+        amountText=findViewById(R.id.amountText);
+
+        catnameText=findViewById(R.id.catnameText);
         Intent intent=getIntent();
         String catName=intent.getStringExtra("name");
         catnameText.setText(catName);
@@ -83,11 +88,16 @@ public class AddActivity extends AppCompatActivity {
 
                         FirebaseUser firebaseUser=firebaseAuth.getCurrentUser();
                         String userEmail=firebaseUser.getEmail();
-
+                        String amount=amountText.getText().toString();
+                        String catName=catnameText.getTransitionName();
                         String comment=commentText.getText().toString();
+
+
 
                         HashMap<String, Object>  expenseData=new HashMap<>();
                         expenseData.put("useremail",userEmail);
+                        expenseData.put("amount",amount);
+                        expenseData.put("categoryNames",catName);
                         expenseData.put("downloadurl",downloadUrl);
                         expenseData.put("comment",comment);
                         expenseData.put("date",FieldValue.serverTimestamp());
@@ -98,6 +108,7 @@ public class AddActivity extends AppCompatActivity {
                                  Intent intent=new Intent(AddActivity.this,FeedActivity.class);
                                  intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                  startActivity(intent);
+                                 finish();
 
                              }
                          }).addOnFailureListener(new OnFailureListener() {
@@ -129,14 +140,12 @@ public class AddActivity extends AppCompatActivity {
             startActivityForResult(intentToGallery,2);
         }
     }
-    public void addCategory(View view) {
+     public void categoryClicked (View view) {
+         Intent intent=new Intent(AddActivity.this,CategoryActivity.class);
+         startActivity(intent);
 
-        Intent intent=new Intent(AddActivity.this,CategoryActivity.class);
-        startActivity(intent);
+     }
 
-
-
-    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

@@ -41,6 +41,7 @@ public class CategoryActivity extends AppCompatActivity {
                 intent.putExtra("name",categoryNames.get(i));
 
                 startActivity(intent);
+
             }
         });
     }
