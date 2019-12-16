@@ -37,7 +37,7 @@ public class FeedActivity extends AppCompatActivity {
         FeedRecyclerAdapter feedRecyclerAdapter;
 
 
-        FirebaseUser firebaseUser=firebaseAuth.getCurrentUser();
+
     @Override
         public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater=getMenuInflater();
