@@ -14,19 +14,33 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
 
 public class SignActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     EditText emailText, passwordText;
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign);
 
+
         firebaseAuth = FirebaseAuth.getInstance();
         emailText =findViewById(R.id.emailText);
         passwordText = findViewById(R.id.passwordText);
+
+
+
 
         FirebaseUser firebaseUser=firebaseAuth.getCurrentUser();
         if (firebaseUser != null){
@@ -37,6 +51,8 @@ public class SignActivity extends AppCompatActivity {
 
     }
     public void signinClicked (View view) {
+
+
         String email=emailText.getText().toString();
         String password=passwordText.getText().toString();
         firebaseAuth.signInWithEmailAndPassword(email,password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
@@ -56,12 +72,12 @@ public class SignActivity extends AppCompatActivity {
     }
 
     public void signupClicked (View view) {
+
+
         String email=emailText.getText().toString();
         String password=passwordText.getText().toString();
 
-
-
-    firebaseAuth.createUserWithEmailAndPassword(email,password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+        firebaseAuth.createUserWithEmailAndPassword(email,password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
         @Override
         public void onSuccess(AuthResult authResult) {
         Toast.makeText(SignActivity.this,"User Created",Toast.LENGTH_LONG).show();

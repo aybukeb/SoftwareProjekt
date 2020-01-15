@@ -15,7 +15,11 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -36,19 +40,64 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.UUID;
 
-import io.grpc.Context;
-
 public class AddActivity extends AppCompatActivity {
     Bitmap selectedImage;
     ImageView imageView;
     EditText commentText;
     EditText amountText;
     TextView catnameText;
+    TextView dateText;
+    CalendarView calendar;
     private FirebaseStorage firebaseStorage;
     private StorageReference storageReference;
     Uri imageData;
     private FirebaseFirestore firebaseFirestore;
     private FirebaseAuth firebaseAuth;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater=getMenuInflater();
+        menuInflater.inflate(R.menu.options_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+
+
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId()==R.id.add_expense) {
+            Intent intentToAdd=new Intent(AddActivity.this,AddActivity.class);
+            startActivity(intentToAdd);
+
+        }
+        if(item.getItemId()==R.id.my_expense) {
+            Intent intentToExpense=new Intent(AddActivity.this, BudgetActivity.class);
+            startActivity(intentToExpense);
+
+
+        }
+        if(item.getItemId()==R.id.my_budget) {
+            Intent intentToAdd=new Intent(AddActivity.this,BudgetActivity.class);
+            startActivity(intentToAdd);
+
+        }
+        if(item.getItemId()==R.id.my_profil) {
+            Intent intentToProfil=new Intent(AddActivity.this,ProfilActivity.class);
+            startActivity(intentToProfil);
+
+        }
+        if(item.getItemId()==R.id.sign_out) {
+            firebaseAuth.signOut();
+            Intent intentToSign=new Intent(AddActivity.this,SignActivity.class);
+            startActivity(intentToSign);
+            finish();
+
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,11 +107,27 @@ public class AddActivity extends AppCompatActivity {
         imageView=findViewById(R.id.imageView2);
         commentText=findViewById(R.id.commentText);
         amountText=findViewById(R.id.amountText);
-
         catnameText=findViewById(R.id.catnameText);
+
         Intent intent=getIntent();
         String catName=intent.getStringExtra("name");
-        catnameText.setText(catName);
+        if(catName != null) {
+        catnameText.setText(catName); }
+
+
+        calendar = (CalendarView) findViewById(R.id.calendarView);
+        dateText=findViewById(R.id.recyclerView_date);
+        calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+
+           @Override
+            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
+
+               dateText.setText(dayOfMonth +" / " + (month+1) + " / " + year);
+
+            }
+        });
+
+
 
         firebaseStorage=FirebaseStorage.getInstance();
         storageReference=firebaseStorage.getReference();
@@ -89,8 +154,9 @@ public class AddActivity extends AppCompatActivity {
                         FirebaseUser firebaseUser=firebaseAuth.getCurrentUser();
                         String userEmail=firebaseUser.getEmail();
                         String amount=amountText.getText().toString();
-                        String catName=catnameText.getTransitionName();
+                        String catName=catnameText.getText().toString();
                         String comment=commentText.getText().toString();
+                        String datee=dateText.getText().toString();
 
 
 
@@ -101,6 +167,7 @@ public class AddActivity extends AppCompatActivity {
                         expenseData.put("downloadurl",downloadUrl);
                         expenseData.put("comment",comment);
                         expenseData.put("date",FieldValue.serverTimestamp());
+                        expenseData.put("calendardate",datee);
 
                          firebaseFirestore.collection("Expenses").add(expenseData).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                              @Override
@@ -143,6 +210,7 @@ public class AddActivity extends AppCompatActivity {
      public void categoryClicked (View view) {
          Intent intent=new Intent(AddActivity.this,CategoryActivity.class);
          startActivity(intent);
+         //finish();
 
      }
 

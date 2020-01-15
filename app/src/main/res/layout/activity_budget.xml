@@ -10,41 +10,50 @@
         android:id="@+id/createBudget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="89dp"
+        android:layout_marginEnd="124dp"
         android:text="Bütçe Oluştur"
-        tools:layout_editor_absoluteX="154dp"
-        tools:layout_editor_absoluteY="373dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText3" />
 
     <TextView
         android:id="@+id/my_income"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="48dp"
         android:text="Gelirim"
-        tools:layout_editor_absoluteX="70dp"
-        tools:layout_editor_absoluteY="187dp" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/editText2"
+        app:layout_constraintEnd_toEndOf="@+id/textView4" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="1dp"
         android:text="Sınırlamalarım"
-        tools:layout_editor_absoluteX="72dp"
-        tools:layout_editor_absoluteY="242dp" />
+        app:layout_constraintEnd_toStartOf="@+id/editText3"
+        app:layout_constraintTop_toBottomOf="@+id/editText2" />
 
     <EditText
         android:id="@+id/editText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="172dp"
+        android:layout_marginEnd="2dp"
         android:ems="10"
         android:inputType="number"
-        tools:layout_editor_absoluteX="162dp"
-        tools:layout_editor_absoluteY="172dp" />
+        app:layout_constraintEnd_toEndOf="@+id/editText3"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editText3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="34dp"
         android:ems="10"
         android:inputType="number"
-        tools:layout_editor_absoluteX="164dp"
-        tools:layout_editor_absoluteY="239dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/textView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 </androidx.constraintlayout.widget.ConstraintLayout>

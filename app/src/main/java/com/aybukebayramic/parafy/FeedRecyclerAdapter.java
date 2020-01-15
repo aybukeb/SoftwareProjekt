@@ -19,12 +19,14 @@ public class FeedRecyclerAdapter extends RecyclerView.Adapter<FeedRecyclerAdapte
     private ArrayList<String> catnameList;
     private ArrayList<String> imageList;
     private ArrayList<String> commentList;
+    private ArrayList<String> dateList;
 
-    public FeedRecyclerAdapter(ArrayList<String> amountList, ArrayList<String> catnameList, ArrayList<String> imageList, ArrayList<String> commentList) {
+    public FeedRecyclerAdapter(ArrayList<String> amountList, ArrayList<String> catnameList, ArrayList<String> imageList, ArrayList<String> commentList, ArrayList<String> dateList) {
         this.amountList = amountList;
         this.catnameList = catnameList;
         this.imageList = imageList;
         this.commentList = commentList;
+        this.dateList = dateList;
     }
 
     @NonNull
@@ -43,12 +45,14 @@ public class FeedRecyclerAdapter extends RecyclerView.Adapter<FeedRecyclerAdapte
         holder.amountText.setText(amountList.get(position));
         holder.catnameText.setText(catnameList.get(position));
         holder.commentText.setText(commentList.get(position));
+        holder.dateText.setText(dateList.get(position));
         Picasso.get().load(imageList.get(position)).into(holder.imageView);
     }
 
     @Override
     public int getItemCount() {
-        return amountList.size();
+
+        return commentList.size();
     }
 
     class ExpenseHolder extends RecyclerView.ViewHolder {
@@ -59,6 +63,7 @@ public class FeedRecyclerAdapter extends RecyclerView.Adapter<FeedRecyclerAdapte
         TextView catnameText;
         ImageView imageView;
         TextView commentText;
+        TextView dateText;
 
 
         public ExpenseHolder(@NonNull View itemView) {
@@ -68,6 +73,7 @@ public class FeedRecyclerAdapter extends RecyclerView.Adapter<FeedRecyclerAdapte
             amountText=itemView.findViewById(R.id.recyclerView_amount);
             catnameText=itemView.findViewById(R.id.recyclerView_category);
             commentText=itemView.findViewById(R.id.recyclerView_comment);
+            dateText=itemView.findViewById(R.id.recyclerView_date);
 
         }
     }

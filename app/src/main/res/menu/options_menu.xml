@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/budget" android:title="Bütçem"></item>
-    <item android:id="@+id/add_expense" android:title="Harcama Ekle"></item>
-    <item android:id="@+id/my_expense" android:title="Harcamalarım"></item>
-    <item android:id="@+id/my_profil" android:title="Profil"></item>
-    <item android:id="@+id/sign_out" android:title="Çıkış Yap"></item>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item android:id="@+id/my_profil" android:title="Profil" />
+    <item android:id="@+id/my_budget" android:title="Bütçe Oluştur"/>
+    <item android:id="@+id/add_expense" android:title="Harcama Ekle"/>
+    <item android:id="@+id/my_expense" android:title="Harcamalarım"/>
+    <item android:id="@+id/sign_out" android:title="Çıkış Yap"/>
+
+
+
 
 </menu>

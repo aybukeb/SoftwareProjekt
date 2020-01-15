@@ -6,69 +6,103 @@
     android:layout_height="match_parent"
     tools:context=".AddActivity">
 
+
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="130dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="189dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="5dp"
         android:onClick="selectImage"
-        app:layout_constraintBottom_toTopOf="@+id/commentText"
-        app:layout_constraintStart_toStartOf="@+id/commentText"
+        app:layout_constraintBottom_toTopOf="@+id/amountText"
+        app:layout_constraintEnd_toEndOf="@+id/amountText"
+        app:layout_constraintStart_toStartOf="@+id/amountText"
         app:layout_constraintTop_toBottomOf="@+id/catnameText"
         app:srcCompat="@android:drawable/ic_input_add" />
 
     <EditText
         android:id="@+id/commentText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="103dp"
+        android:layout_width="189dp"
+        android:layout_height="40dp"
         android:ems="10"
-        android:hint="yorum yaz"
+        android:gravity="center"
+        android:hint="Yorum Yaz"
         android:inputType="textPersonName"
+        android:textSize="18sp"
+        android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/amountText" />
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="150dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="83dp"
-        android:layout_marginBottom="109dp"
+        android:layout_width="189dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="5dp"
         android:background="@drawable/ovalbuton"
         android:onClick="add"
         android:text="Ekle"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/commentText" />
 
     <TextView
+
         android:id="@+id/catnameText"
-        android:layout_width="155dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="189dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="5dp"
         android:clickable="true"
+        android:gravity="center"
+        android:hint="Kategori Seç"
         android:onClick="categoryClicked"
-        android:text="Kategori"
         android:textColor="@color/colorAccent"
+        android:textSize="19sp"
         app:layout_constraintBottom_toTopOf="@+id/imageView2"
-        app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/amountText" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView_date" />
 
     <EditText
         android:id="@+id/amountText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="125dp"
-        android:layout_marginEnd="7dp"
-        android:layout_marginBottom="32dp"
+        android:layout_width="189dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="5dp"
         android:ems="10"
-        android:hint="miktar"
-        android:inputType="textPersonName"
+        android:gravity="center"
+        android:hint="Miktar (TL)"
+        android:inputType="number"
+        app:layout_constraintBottom_toTopOf="@+id/commentText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="wrap_content"
+        android:layout_height="306dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/recyclerView_date"
+        android:layout_width="189dp"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:hint="Tarih"
+        android:textSize="19sp"
+        android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toTopOf="@+id/catnameText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
