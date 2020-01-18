@@ -48,6 +48,7 @@ public class AddActivity extends AppCompatActivity {
     TextView catnameText;
     TextView dateText;
     CalendarView calendar;
+    //String uid;
     private FirebaseStorage firebaseStorage;
     private StorageReference storageReference;
     Uri imageData;
@@ -108,11 +109,12 @@ public class AddActivity extends AppCompatActivity {
         commentText=findViewById(R.id.commentText);
         amountText=findViewById(R.id.amountText);
         catnameText=findViewById(R.id.catnameText);
+        //uid=firebaseAuth.getCurrentUser().getUid();
+
 
         Intent intent=getIntent();
         String catName=intent.getStringExtra("name");
-        if(catName != null) {
-        catnameText.setText(catName); }
+        catnameText.setText(catName);
 
 
         calendar = (CalendarView) findViewById(R.id.calendarView);
@@ -157,6 +159,7 @@ public class AddActivity extends AppCompatActivity {
                         String catName=catnameText.getText().toString();
                         String comment=commentText.getText().toString();
                         String datee=dateText.getText().toString();
+                        String uid=firebaseAuth.getCurrentUser().getUid();
 
 
 
@@ -168,6 +171,7 @@ public class AddActivity extends AppCompatActivity {
                         expenseData.put("comment",comment);
                         expenseData.put("date",FieldValue.serverTimestamp());
                         expenseData.put("calendardate",datee);
+                        expenseData.put("useruid",uid);
 
                          firebaseFirestore.collection("Expenses").add(expenseData).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                              @Override

@@ -3,6 +3,7 @@ package com.aybukebayramic.parafy;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,6 +14,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -101,14 +103,20 @@ public class FeedActivity extends AppCompatActivity {
                 userDatefromFB=new ArrayList<>();
 
 
+
+
                 firebaseAuth=FirebaseAuth.getInstance();
                 firebaseFirestore=FirebaseFirestore.getInstance();
                 uid=firebaseAuth.getCurrentUser().getUid();
+
                 getDataFromFirestore();
 
                 RecyclerView recyclerView=findViewById(R.id.recyclerView);
-                recyclerView.setLayoutManager(new LinearLayoutManager(this));
+                recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
                 feedRecyclerAdapter=new FeedRecyclerAdapter(userAmountfromFB,usercategoryNamesfromFB,userImagefromFB,userCommentfromFB,userDatefromFB);
+                DividerItemDecoration dividerItemDecoration=new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+                dividerItemDecoration.setDrawable(getResources().getDrawable(R.drawable.recyclerview_divider));
+                recyclerView.addItemDecoration(dividerItemDecoration);
                 recyclerView.setAdapter(feedRecyclerAdapter);
 
 
@@ -116,44 +124,49 @@ public class FeedActivity extends AppCompatActivity {
             public void getDataFromFirestore() {
 
                     CollectionReference collectionReference = firebaseFirestore.collection("Expenses");
-                    collectionReference.orderBy("date", Query.Direction.DESCENDING).addSnapshotListener(new EventListener<QuerySnapshot>() {
-                        @Override
-                        public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
-                            if (e != null) {
-                                Toast.makeText(FeedActivity.this, e.getLocalizedMessage().toString(), Toast.LENGTH_LONG).show();
-                            }
-                            if (queryDocumentSnapshots != null) {
 
-                                for (DocumentSnapshot snapshot : queryDocumentSnapshots.getDocuments()) {
+                    collectionReference.whereEqualTo("useruid",uid).addSnapshotListener(new EventListener<QuerySnapshot>() {
+                            @Override
+                            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+                                if (e != null) {
+                                    Toast.makeText(FeedActivity.this, e.getLocalizedMessage().toString(), Toast.LENGTH_LONG).show();
+                                }
+                                if (queryDocumentSnapshots != null) {
 
-                                    Map<String,Object> data = snapshot.getData();
-                                    if(data!=null) {
-                                    String amount = String.valueOf( (String) data.get("amount"));
-                                    String categoryNames = (String) data.get("categoryNames");
-                                    String comment = (String) data.get("comment");
-                                    String downloadUrl = (String) data.get("downloadurl");
-                                    //String userEmail=(String) data.get("useremail");
-                                    String date=(String) data.get("calendardate");
+                                    for (DocumentSnapshot snapshot : queryDocumentSnapshots.getDocuments()) {
 
-                                    userAmountfromFB.add(amount);
-                                    usercategoryNamesfromFB.add(categoryNames);
-                                    userCommentfromFB.add(comment);
-                                    userImagefromFB.add(downloadUrl);
-                                    userDatefromFB.add(date);
+                                        Map<String, Object> data = snapshot.getData();
+                                        if (data != null) {
+                                            String amount = String.valueOf((String) data.get("amount"));
+                                            String categoryNames = (String) data.get("categoryNames");
+                                            String comment = (String) data.get("comment");
+                                            String downloadUrl = (String) data.get("downloadurl");
+                                            //String userEmail=(String) data.get("useremail");
+                                            String date = (String) data.get("calendardate");
+
+                                            userAmountfromFB.add(amount);
+                                            usercategoryNamesfromFB.add(categoryNames);
+                                            userCommentfromFB.add(comment);
+                                            userImagefromFB.add(downloadUrl);
+                                            userDatefromFB.add(date);
+                                        } else {
+                                            Toast.makeText(FeedActivity.this, "null", Toast.LENGTH_LONG).show();
+                                        }
+                                        //useremailfromFB.add(userEmail);
+
+                                        feedRecyclerAdapter.notifyDataSetChanged();
+
+
                                     }
-                                    else {
-                                        Toast.makeText(FeedActivity.this,"null",Toast.LENGTH_LONG).show();
-                                    }
-                                    //useremailfromFB.add(userEmail);
-
-                                    feedRecyclerAdapter.notifyDataSetChanged();
-
-
                                 }
                             }
-                        }
-                    });
+                        });
+
+
+
                 }
+                    }
 
 
-}
+
+
