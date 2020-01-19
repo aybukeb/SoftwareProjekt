@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="100dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_weight="4">
 
     <TextView
         android:id="@+id/recyclerView_amount"
@@ -12,6 +13,7 @@
         android:layout_height="25dp"
         android:layout_marginStart="32dp"
         android:text="Miktar"
+        app:layout_constraintVertical_weight="1"
         app:layout_constraintBottom_toTopOf="@+id/recyclerView_category"
         app:layout_constraintStart_toEndOf="@+id/recyclerView_imageView" />
 
@@ -20,6 +22,7 @@
         android:layout_width="200dp"
         android:layout_height="25dp"
         android:layout_marginStart="32dp"
+        app:layout_constraintVertical_weight="1"
         android:text="category"
         app:layout_constraintBottom_toTopOf="@+id/recyclerView_date"
         app:layout_constraintStart_toEndOf="@+id/recyclerView_imageView" />
@@ -42,6 +45,7 @@
         android:layout_width="200dp"
         android:layout_height="25dp"
         android:layout_marginTop="24dp"
+        app:layout_constraintVertical_weight="1"
         android:text="comment"
         app:layout_constraintStart_toStartOf="@+id/recyclerView_category"
         app:layout_constraintTop_toBottomOf="@+id/recyclerView_category" />
@@ -50,6 +54,7 @@
         android:id="@+id/recyclerView_date"
         android:layout_width="200dp"
         android:layout_height="25dp"
+        app:layout_constraintVertical_weight="1"
         android:text="Tarih"
         app:layout_constraintBottom_toTopOf="@+id/recyclerView_comment"
         app:layout_constraintStart_toStartOf="@+id/recyclerView_category" />

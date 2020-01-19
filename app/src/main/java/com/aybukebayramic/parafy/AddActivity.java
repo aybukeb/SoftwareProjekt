@@ -73,7 +73,7 @@ public class AddActivity extends AppCompatActivity {
 
         }
         if(item.getItemId()==R.id.my_expense) {
-            Intent intentToExpense=new Intent(AddActivity.this, BudgetActivity.class);
+            Intent intentToExpense=new Intent(AddActivity.this, ExpensesActivity.class);
             startActivity(intentToExpense);
 
 

@@ -11,13 +11,13 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class CategoryActivity extends AppCompatActivity {
+public class SecondCategoryActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_category);
-        ListView listView=findViewById(R.id.catlistView);
+        setContentView(R.layout.activity_second_category);
+        ListView listView=findViewById(R.id.catlistView2);
         final ArrayList<String> categoryNames=new ArrayList<>();
         categoryNames.add("Gıda");
         categoryNames.add("Giyim");
@@ -31,22 +31,20 @@ public class CategoryActivity extends AppCompatActivity {
         categoryNames.add("Eğlence");
         categoryNames.add("Hobi");
 
-        ArrayAdapter arrayAdapter=new ArrayAdapter(CategoryActivity.this,android.R.layout.simple_list_item_1,categoryNames);
+        ArrayAdapter arrayAdapter=new ArrayAdapter(SecondCategoryActivity.this,android.R.layout.simple_list_item_1,categoryNames);
         listView.setAdapter(arrayAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
                 //System.out.println("categoryNames.get(i)");
-                Intent intent=new Intent(getApplicationContext(),AddActivity.class);
-                intent.putExtra("name",categoryNames.get(i));
+                Intent intent2=new Intent(getApplicationContext(),CreateBudgetActivity.class);
+                intent2.putExtra("name2",categoryNames.get(i));
 
-                startActivity(intent);
+                startActivity(intent2);
 
 
             }
         });
 
-
     }
-
 }

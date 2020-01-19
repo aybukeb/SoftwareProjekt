@@ -60,14 +60,14 @@ public class FeedActivity extends AppCompatActivity {
 
         }
         if(item.getItemId()==R.id.my_expense) {
-            Intent intentToExpense=new Intent(FeedActivity.this, BudgetActivity.class);
+            Intent intentToExpense=new Intent(FeedActivity.this, ExpensesActivity.class);
             startActivity(intentToExpense);
 
 
         }
         if(item.getItemId()==R.id.my_budget) {
-            Intent intentToAdd=new Intent(FeedActivity.this,BudgetActivity.class);
-            startActivity(intentToAdd);
+            Intent intentToBudget=new Intent(FeedActivity.this,BudgetActivity.class);
+            startActivity(intentToBudget);
 
         }
         if(item.getItemId()==R.id.my_profil) {

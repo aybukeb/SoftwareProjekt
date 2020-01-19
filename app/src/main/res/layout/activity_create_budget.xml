@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".CreateBudgetActivity">
+
+    <TextView
+        android:id="@+id/catnameText2"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:hint="Kategori Seç"
+        android:onClick="budgetCategoryClicked"
+        android:textColorHint="#D81B60"
+        android:textColor="#D81B60"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/constrictionAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Kısıtlama Miktarın"
+        android:inputType="number"
+        android:textColor="#D81B60"
+        android:textColorHint="#D81B60"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/create_budget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ovalbuton"
+        android:onClick="createbudget_clicked"
+        android:text="Oluştur"
+        android:textColor="#ffffff"
+        android:textSize="20dp" />
+</LinearLayout>
