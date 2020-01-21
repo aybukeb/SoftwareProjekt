@@ -1,6 +1,7 @@
 package com.aybukebayramic.parafy;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,13 +9,24 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.ListView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.ArrayList;
+import java.util.Map;
 
 public class ExpensesActivity extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
-
+    private FirebaseFirestore firebaseFirestore;
+    String uid;
 
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater=getMenuInflater();
@@ -64,5 +76,35 @@ public class ExpensesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expenses);
+
+        firebaseAuth=FirebaseAuth.getInstance();
+        firebaseFirestore=FirebaseFirestore.getInstance();
+        uid=firebaseAuth.getCurrentUser().getUid();
+
+        //getCatsAmountfromFirestore();
+
+
+
+
     }
-}
+    //public void getCatsAmountfromFirestore() {
+        //CollectionReference collectionReference=firebaseFirestore.collection("Expenses");
+        //collectionReference.whereEqualTo("useruid",uid).addSnapshotListener(new EventListener<QuerySnapshot>() {
+            //@Override
+            //public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+                //for (DocumentSnapshot snapshot : queryDocumentSnapshots.getDocuments()) {
+                    //Map<String, Object> data = snapshot.getData();
+                    //String categoryNames = (String) data.get("categoryNames");
+                    //String amount = String.valueOf((String) data.get("amount"));
+                    //if(categoryNames=) {
+
+                    // }
+
+                //}
+            //}
+        //});
+
+    }
+
+
+

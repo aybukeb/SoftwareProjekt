@@ -12,8 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:onClick="create_budget"
-        android:text="Bütçe Planlaması Oluştur "
-        android:textSize="20dp"
+        android:paddingTop="5dp"
+        android:text="Yeni Bütçe Planlaması Oluştur"
+        android:textSize="15dp"
         android:textColor="#D81B60"/>
 
     <androidx.recyclerview.widget.RecyclerView
