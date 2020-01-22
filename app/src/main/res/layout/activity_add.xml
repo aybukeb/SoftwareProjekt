@@ -26,7 +26,7 @@
         app:layout_constraintTop_toBottomOf="@id/amountText"
         android:gravity="center"
         android:inputType="textPersonName"
-        android:textSize="19sp"
+        android:textSize="17sp"
         tools:layout_editor_absoluteX="9dp"
         tools:layout_editor_absoluteY="499dp" />
 
@@ -38,7 +38,7 @@
         android:gravity="center"
         android:onClick="add"
         android:text="Ekle"
-        android:textSize="19sp"
+        android:textSize="15sp"
         android:textColor="#ffffff"
         app:layout_constraintTop_toBottomOf="@+id/commentText"
         app:layout_constraintRight_toRightOf="parent"
@@ -56,7 +56,7 @@
         android:hint="Kategori Seç"
         android:onClick="categoryClicked"
         app:layout_constraintTop_toBottomOf="@+id/recyclerView_date"
-        android:textSize="19sp"
+        android:textSize="17sp"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="365dp" />
 
@@ -69,7 +69,7 @@
         android:hint="Miktar (TL)"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
         android:inputType="number"
-        android:textSize="19sp"
+        android:textSize="17sp"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="458dp" />
 
@@ -87,7 +87,7 @@
         android:gravity="center"
         android:hint="Tarih"
         app:layout_constraintTop_toBottomOf="@+id/calendarView"
-        android:textSize="19sp"
+        android:textSize="17sp"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="316dp" />
 

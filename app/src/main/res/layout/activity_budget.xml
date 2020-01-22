@@ -14,8 +14,11 @@
         android:onClick="create_budget"
         android:paddingTop="5dp"
         android:text="Yeni Bütçe Planlaması Oluştur"
+        android:paddingLeft="5dp"
+        android:drawableEnd="@drawable/ic_add"
+        android:gravity="center_vertical"
         android:textSize="15dp"
-        android:textColor="#D81B60"/>
+        android:textColor="#9278C7"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView2"

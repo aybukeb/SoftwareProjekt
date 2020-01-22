@@ -11,7 +11,7 @@
         android:id="@+id/walletText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableStart="@drawable/ic_budget"
+        android:drawableEnd="@drawable/ic_budget"
         android:text="Cüzdan İsmi"
         android:paddingTop="10dp"
         android:textSize="19sp" />
@@ -27,7 +27,7 @@
         android:id="@+id/incomeText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:drawableStart="@drawable/ic_monetization_on_black_24dp"
+        android:drawableEnd="@drawable/ic_monetization_on_black_24dp"
         android:text="Başlangıç Bakiyesi"
         android:textSize="19sp"
          />
@@ -42,13 +42,13 @@
 
     <Button
         android:id="@+id/saveWallet"
-        android:layout_width="129dp"
-        android:layout_height="48dp"
+        android:layout_width="140dp"
+        android:layout_height="41dp"
         android:background="@drawable/ovalbuton"
         android:text="Kaydet"
         android:layout_gravity="center"
         android:textColor="#ffffff"
-        android:textSize="19sp"
+        android:textSize="15sp"
          />
 
 </LinearLayout>

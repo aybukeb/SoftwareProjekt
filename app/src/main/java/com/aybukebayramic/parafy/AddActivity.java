@@ -111,10 +111,10 @@ public class AddActivity extends AppCompatActivity {
         catnameText=findViewById(R.id.catnameText);
         //uid=firebaseAuth.getCurrentUser().getUid();
 
-
-        Intent intent=getIntent();
-        String catName=intent.getStringExtra("name");
-        catnameText.setText(catName);
+//
+//        Intent intent=getIntent();
+//        String catName=intent.getStringExtra("name");
+//        catnameText.setText(catName);
 
 
         calendar = (CalendarView) findViewById(R.id.calendarView);
@@ -213,8 +213,7 @@ public class AddActivity extends AppCompatActivity {
     }
      public void categoryClicked (View view) {
          Intent intent=new Intent(AddActivity.this,CategoryActivity.class);
-         startActivity(intent);
-         //finish();
+         startActivityForResult(intent,3);
 
      }
 
@@ -252,6 +251,10 @@ public class AddActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
+        }
+        if (requestCode==3 && resultCode==RESULT_OK && data != null) {
+            System.out.println("deneme " + data);
+            catnameText.setText(data.getStringExtra("name"));
         }
         super.onActivityResult(requestCode, resultCode, data);
     }

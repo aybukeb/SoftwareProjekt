@@ -37,10 +37,11 @@ public class CategoryActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
                 //System.out.println("categoryNames.get(i)");
-                Intent intent=new Intent(getApplicationContext(),AddActivity.class);
+                Intent intent=new Intent();
                 intent.putExtra("name",categoryNames.get(i));
 
-                startActivity(intent);
+                setResult(RESULT_OK, intent);
+                finish();
 
 
             }

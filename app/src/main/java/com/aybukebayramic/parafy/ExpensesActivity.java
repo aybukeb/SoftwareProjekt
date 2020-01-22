@@ -29,41 +29,40 @@ public class ExpensesActivity extends AppCompatActivity {
     String uid;
 
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater menuInflater=getMenuInflater();
-        menuInflater.inflate(R.menu.options_menu,menu);
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.options_menu, menu);
         return super.onCreateOptionsMenu(menu);
-
 
 
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId()==R.id.add_expense) {
-            Intent intentToAdd=new Intent(ExpensesActivity.this,AddActivity.class);
+        if (item.getItemId() == R.id.add_expense) {
+            Intent intentToAdd = new Intent(ExpensesActivity.this, AddActivity.class);
             startActivity(intentToAdd);
 
         }
-        if(item.getItemId()==R.id.my_expense) {
-            Intent intentToExpense=new Intent(ExpensesActivity.this, ExpensesActivity.class);
+        if (item.getItemId() == R.id.my_expense) {
+            Intent intentToExpense = new Intent(ExpensesActivity.this, ExpensesActivity.class);
             startActivity(intentToExpense);
 
 
         }
-        if(item.getItemId()==R.id.my_budget) {
-            Intent intentToAdd=new Intent(ExpensesActivity.this,BudgetActivity.class);
+        if (item.getItemId() == R.id.my_budget) {
+            Intent intentToAdd = new Intent(ExpensesActivity.this, BudgetActivity.class);
             startActivity(intentToAdd);
 
         }
-        if(item.getItemId()==R.id.my_profil) {
-            Intent intentToProfil=new Intent(ExpensesActivity.this,ProfilActivity.class);
+        if (item.getItemId() == R.id.my_profil) {
+            Intent intentToProfil = new Intent(ExpensesActivity.this, ProfilActivity.class);
             startActivity(intentToProfil);
 
         }
-        if(item.getItemId()==R.id.sign_out) {
+        if (item.getItemId() == R.id.sign_out) {
 
             firebaseAuth.signOut();
-            Intent intentToSign=new Intent(ExpensesActivity.this,SignActivity.class);
+            Intent intentToSign = new Intent(ExpensesActivity.this, SignActivity.class);
             startActivity(intentToSign);
             finish();
 
@@ -77,34 +76,32 @@ public class ExpensesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expenses);
 
-        firebaseAuth=FirebaseAuth.getInstance();
-        firebaseFirestore=FirebaseFirestore.getInstance();
-        uid=firebaseAuth.getCurrentUser().getUid();
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseFirestore = FirebaseFirestore.getInstance();
+        uid = firebaseAuth.getCurrentUser().getUid();
 
         //getCatsAmountfromFirestore();
 
 
-
-
     }
-    //public void getCatsAmountfromFirestore() {
-        //CollectionReference collectionReference=firebaseFirestore.collection("Expenses");
-        //collectionReference.whereEqualTo("useruid",uid).addSnapshotListener(new EventListener<QuerySnapshot>() {
-            //@Override
-            //public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
-                //for (DocumentSnapshot snapshot : queryDocumentSnapshots.getDocuments()) {
-                    //Map<String, Object> data = snapshot.getData();
-                    //String categoryNames = (String) data.get("categoryNames");
-                    //String amount = String.valueOf((String) data.get("amount"));
-                    //if(categoryNames=) {
 
-                    // }
+    public void getCatsAmountfromFirestore() {
+        CollectionReference collectionReference = firebaseFirestore.collection("Expenses");
 
-                //}
-            //}
-        //});
+        collectionReference.whereEqualTo("useruid", uid).addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+                double sum_amount = 0;
+                for (DocumentSnapshot snapshot : queryDocumentSnapshots.getDocuments()) {
+                    Map<String, Object> data = snapshot.getData();
+                    String amount = String.valueOf((String) data.get("amount"));
+
+
+                }
+            }
+        });
 
     }
 
 
-
+}
