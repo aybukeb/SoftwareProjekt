@@ -156,6 +156,7 @@ public class AddActivity extends AppCompatActivity {
                         FirebaseUser firebaseUser=firebaseAuth.getCurrentUser();
                         String userEmail=firebaseUser.getEmail();
                         String amount=amountText.getText().toString();
+                        //String amount=String.valueOf((String) amountText.getText().toString());
                         String catName=catnameText.getText().toString();
                         String comment=commentText.getText().toString();
                         String datee=dateText.getText().toString();

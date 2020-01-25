@@ -3,49 +3,34 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
-    <item android:title="Menu"
-         app:showAsAction="always"
-        android:icon="@drawable/ic_more_horiz_black_24dp">
-
-        <menu>
 
     <item
         android:id="@+id/my_profil"
-        android:title="Profil"
+        android:title="Cüzdanım"
         android:icon="@drawable/ic_profil"
-        app:showAsAction="never"
+
 
         />
     <item
         android:id="@+id/my_budget"
         android:title="Bütçe Oluştur"
-        app:showAsAction="never"
         android:icon="@drawable/ic_budget"/>
 
     <item
         android:id="@+id/add_expense"
         android:title="Harcama Ekle"
-        app:showAsAction="never"
         android:icon="@drawable/ic_add"/>
 
     <item
         android:id="@+id/my_expense"
         android:title="Harcamalarım"
-        app:showAsAction="never"
         android:icon="@drawable/ic_expense"
         />
 
     <item
         android:id="@+id/sign_out"
         android:title="Çıkış Yap"
-        app:showAsAction="never"
         android:icon="@drawable/ic_exit_to_app_black_24dp"
         />
 
         </menu>
-    </item>
-
-
-
-
-</menu>

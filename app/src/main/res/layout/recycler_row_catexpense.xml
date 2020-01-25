@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="60dp">
+
+    <TextView
+        android:id="@+id/rcycler_sumAmountcat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:paddingLeft="7dp"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:textSize="17dp"/>
+
+    <TextView
+        android:id="@+id/rcycler_sumAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="7dp"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:textSize="17dp"
+        android:text="TextView" />
+
+</LinearLayout>
