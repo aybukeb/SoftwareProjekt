@@ -24,6 +24,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class ExpensesActivity extends AppCompatActivity {
@@ -31,7 +32,8 @@ public class ExpensesActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore firebaseFirestore;
     String uid;
-    long sum;
+    //long sum;
+    Map<String,Long> sums = new HashMap<>();
     ArrayList<String> userSumAmount;
     ArrayList<String> usersumAmountCategory;
     ExpenseRecyclerAdapter expenseRecyclerAdapter;
@@ -125,74 +127,91 @@ public class ExpensesActivity extends AppCompatActivity {
 
                                 String cat = (String) data.get("categoryNames");
                                 String amount = String.valueOf((String) data.get("amount"));
-
-
-
-                            if (cat == "Gıda") {
-                                sum=0;
-                                sum += Long.valueOf((Long) data.get("amount"));
+                                if(!sums.containsKey(cat)){
+                                    sums.put(cat,Long.valueOf(0));
+                                }
+                                if (cat.equals("Gıda")) {
+                                    Long l= sums.get(cat);
+                                    l+=Long.valueOf(amount);
+                                    sums.put(cat,l);
 
                                 }
 
-                            if (cat == "Giyim") {
-                                sum=0;
-                                sum += Long.valueOf((Long) data.get(amount));
+                            if (cat.equals("Giyim")) {
+                                Long l= sums.get(cat);
+                                l+=Long.valueOf(amount);
+                                sums.put(cat,l);
                             }
-                            if (cat == "Faturalar") {
-                                sum=0;
-                                sum += Long.valueOf((Long) data.get(amount));
+                            if (cat.equals("Faturalar")) {
+                                Long l= sums.get(cat);
+                                l+=Long.valueOf(amount);
+                                sums.put(cat,l);
 
                             }
-                            if (cat == "Taksitler") {
-                                sum=0;
-                                sum += Long.valueOf((Long) data.get(amount));
+                            if (cat.equals("Taksitler")) {
+                                Long l= sums.get(cat);
+                                l+=Long.valueOf(amount);
+                                sums.put(cat,l);
+                            }
+                            if (cat.equals("Kira")) {
+                                Long l= sums.get(cat);
+                                l+=Long.valueOf(amount);
+                                sums.put(cat,l);
 
                             }
-                            if (cat == "Kira") {
-                                sum=0;
-                                sum += Long.valueOf((Long) data.get(amount));
+                            if (cat.equals("Hediyeler")) {
+                                Long l= sums.get(cat);
+                                l+=Long.valueOf(amount);
+                                sums.put(cat,l);
 
                             }
-                            if (cat == "Hediyeler") {
-                                sum=0;
-                                sum += Long.valueOf((Long) data.get(amount));
+                            if (cat.equals("Ev Alışverişi")) {
+                                Long l= sums.get(cat);
+                                l+=Long.valueOf(amount);
+                                sums.put(cat,l);
+                            }
+                            if (cat.equals("Sağlık")) {
+                                Long l= sums.get(cat);
+                                l+=Long.valueOf(amount);
+                                sums.put(cat,l);
+                            }
+                            if (cat.equals("Spor")) {
+                                Long l= sums.get(cat);
+                                l+=Long.valueOf(amount);
+                                sums.put(cat,l);
+                            }
+                            if (cat.equals("Eğlence")) {
+                                Long l= sums.get(cat);
+                                l+=Long.valueOf(amount);
+                                sums.put(cat,l);
+                            }
+                            if (cat.equals("Hobi")) {
+                                Long l= sums.get(cat);
+                                l+=Long.valueOf(amount);
+                                sums.put(cat,l);
+                            }
+                            if (cat.equals("Eğitim")) {
+                                Long l= sums.get(cat);
+                                l+=Long.valueOf(amount);
+                                sums.put(cat,l);
+                            }
 
-                            }
-                            if (cat == "Ev Alışverişi") {
-                                sum=0;
-                                sum += Long.valueOf((Long) data.get(amount));
-                            }
-                            if (cat == "Sağlık") {
-                                sum=0;
-                                sum += Long.valueOf((Long) data.get(amount));
-                            }
-                            if (cat == "Spor") {
-                                sum=0;
-                                sum += Long.valueOf((Long) data.get(amount));
-                            }
-                            if (cat == "Eğlence") {
-                                sum=0;
-                                sum += Long.valueOf((Long) data.get(amount));
-                            }
-                            if (cat == "Hobi") {
-                                sum=0;
-                                sum += Long.valueOf((Long) data.get(amount));
-                            }
-                            if (cat == "Eğitim") {
-                                sum=0;
-                                sum += Long.valueOf((Long) data.get(amount));
-                            }
-
-                            userSumAmount.add(Long.toString(sum));
-                            usersumAmountCategory.add(cat);
-
-                        } else {
+                            } else {
                             Toast.makeText(ExpensesActivity.this, "null", Toast.LENGTH_LONG).show();
                         }
-                        expenseRecyclerAdapter.notifyDataSetChanged();
 
 
                     }
+
+                    for(String kat : sums.keySet()){
+                        userSumAmount.add(sums.get(kat).toString());
+                        usersumAmountCategory.add(kat);
+
+                    }
+                    expenseRecyclerAdapter.notifyDataSetChanged();
+
+
+
                 }
             }
         });

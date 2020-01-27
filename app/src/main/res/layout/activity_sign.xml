@@ -10,9 +10,9 @@
         android:id="@+id/emailText"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="54dp"
+        android:layout_marginStart="52dp"
         android:layout_marginTop="201dp"
-        android:layout_marginEnd="54dp"
+        android:layout_marginEnd="52dp"
         android:layout_marginBottom="25dp"
         android:ems="10"
         android:hint="Mail Adresi"
@@ -20,6 +20,7 @@
         android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/passwordText"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,13 +37,14 @@
         android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailText" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="200dp"
-        android:layout_height="0dp"
+        android:layout_height="45dp"
         android:layout_marginBottom="96dp"
         android:background="@drawable/ovalbuton"
         android:backgroundTint="#9278C7"
@@ -59,7 +61,7 @@
     <Button
         android:id="@+id/button2"
         android:layout_width="200dp"
-        android:layout_height="0dp"
+        android:layout_height="45dp"
         android:layout_marginBottom="23dp"
         android:background="@drawable/ovalbuton"
         android:backgroundTint="#9278C7"
@@ -85,14 +87,28 @@
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="97dp"
-        android:layout_height="94dp"
+        android:layout_width="89dp"
+        android:layout_height="74dp"
         app:layout_constraintBottom_toTopOf="@+id/emailText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintHorizontal_bias="0.127"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.728"
+        app:layout_constraintVertical_bias="0.818"
         app:srcCompat="@drawable/ic_budget" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PARAFY"
+        android:textColor="#9278C7"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/emailText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.766" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

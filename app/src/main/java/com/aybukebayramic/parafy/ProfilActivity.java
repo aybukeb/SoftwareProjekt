@@ -19,18 +19,11 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class ProfilActivity extends AppCompatActivity {
 
-    Button saveWallet;
-    EditText walletEdit;
-    EditText incomeEdit;
-    TextView walletText;
-    TextView incomeText;
+
 
     private FirebaseAuth firebaseAuth;
 
 
-    float fl;
-    String st;
-    int in;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -82,37 +75,6 @@ public class ProfilActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profil);
 
-        firebaseAuth=FirebaseAuth.getInstance();
 
-        saveWallet=(Button)findViewById(R.id.saveWallet);
-        walletEdit=(EditText)findViewById(R.id.walletEdit);
-        incomeEdit=(EditText)findViewById(R.id.incomeEdit);
-        walletText=(TextView)findViewById(R.id.walletText);
-        incomeText=(TextView)findViewById(R.id.incomeText);
-
-        SharedPreferences sharedPreferences=PreferenceManager.getDefaultSharedPreferences(this);
-        Float fl1=sharedPreferences.getFloat("fl",0);
-        incomeEdit.setText(""+fl1);
-
-        String st1=sharedPreferences.getString("st","");
-        walletEdit.setText(st1);
-
-
-        saveWallet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                st=walletEdit.getText().toString();
-                fl=Float.parseFloat((incomeEdit.getText().toString()));
-
-                SharedPreferences sharedPreferences= PreferenceManager.getDefaultSharedPreferences(ProfilActivity.this);
-                SharedPreferences.Editor editor=sharedPreferences.edit();
-
-                editor.putFloat("fl",fl);
-                editor.putString("st",st);
-                editor.apply();
-
-            }
-        });
     }
 }
