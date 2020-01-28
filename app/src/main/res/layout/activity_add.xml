@@ -59,6 +59,7 @@
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="365dp" />
 
+
     <EditText
         android:id="@+id/amountText"
         android:layout_width="match_parent"

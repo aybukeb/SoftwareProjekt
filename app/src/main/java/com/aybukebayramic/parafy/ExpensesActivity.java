@@ -64,11 +64,7 @@ public class ExpensesActivity extends AppCompatActivity {
             startActivity(intentToAdd);
 
         }
-        if (item.getItemId() == R.id.my_profil) {
-            Intent intentToProfil = new Intent(ExpensesActivity.this, ProfilActivity.class);
-            startActivity(intentToProfil);
 
-        }
         if (item.getItemId() == R.id.sign_out) {
 
             firebaseAuth.signOut();
@@ -127,6 +123,7 @@ public class ExpensesActivity extends AppCompatActivity {
 
                                 String cat = (String) data.get("categoryNames");
                                 String amount = String.valueOf((String) data.get("amount"));
+
                                 if(!sums.containsKey(cat)){
                                     sums.put(cat,Long.valueOf(0));
                                 }
@@ -170,6 +167,11 @@ public class ExpensesActivity extends AppCompatActivity {
                                 l+=Long.valueOf(amount);
                                 sums.put(cat,l);
                             }
+                            if (cat.equals("Market Alışverişi")) {
+                                Long l= sums.get(cat);
+                                l+=Long.valueOf(amount);
+                                sums.put(cat,l);
+                            }
                             if (cat.equals("Sağlık")) {
                                 Long l= sums.get(cat);
                                 l+=Long.valueOf(amount);
@@ -195,11 +197,65 @@ public class ExpensesActivity extends AppCompatActivity {
                                 l+=Long.valueOf(amount);
                                 sums.put(cat,l);
                             }
+                            if (cat.equals("Kırtasiye")) {
+                                Long l= sums.get(cat);
+                                l+=Long.valueOf(amount);
+                                sums.put(cat,l);
+                            }
+                            if (cat.equals("Ulaşım")) {
+                                Long l= sums.get(cat);
+                                l+=Long.valueOf(amount);
+                                sums.put(cat,l);
+                            }
+                            if (cat.equals("Seyahat")) {
+                                Long l= sums.get(cat);
+                                l+=Long.valueOf(amount);
+                                sums.put(cat,l);
+                            }
+                            if (cat.equals("Kredi")) {
+                                Long l= sums.get(cat);
+                                l+=Long.valueOf(amount);
+                                sums.put(cat,l);
+                            }
+                            if (cat.equals("Dışarıda Yemek")) {
+                                Long l= sums.get(cat);
+                                l+=Long.valueOf(amount);
+                                sums.put(cat,l);
+                            }
+                            if (cat.equals("Aksesuar")) {
+                                Long l= sums.get(cat);
+                                l+=Long.valueOf(amount);
+                                sums.put(cat,l);
+                            }
+                            if (cat.equals("Elektronik")) {
+                                Long l= sums.get(cat);
+                                l+=Long.valueOf(amount);
+                                sums.put(cat,l);
+                            }
+                            if (cat.equals("Bağış")) {
+                                Long l= sums.get(cat);
+                                l+=Long.valueOf(amount);
+                                sums.put(cat,l);
+                            }
+                            if (cat.equals("Dekorasyon")) {
+                                Long l= sums.get(cat);
+                                l+=Long.valueOf(amount);
+                                sums.put(cat,l);
+                            }
+                            if (cat.equals("Kişisel Bakım")) {
+                                Long l= sums.get(cat);
+                                l+=Long.valueOf(amount);
+                                sums.put(cat,l);
+                            }
+                            if (cat.equals("Diğer")) {
+                                Long l= sums.get(cat);
+                                l+=Long.valueOf(amount);
+                                sums.put(cat,l);
+                            }
 
                             } else {
                             Toast.makeText(ExpensesActivity.this, "null", Toast.LENGTH_LONG).show();
                         }
-
 
                     }
 

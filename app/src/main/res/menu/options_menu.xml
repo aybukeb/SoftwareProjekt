@@ -4,33 +4,29 @@
     >
 
 
-    <item
-        android:id="@+id/my_profil"
-        android:title="Cüzdanım"
-        android:icon="@drawable/ic_profil"
 
-
-        />
     <item
         android:id="@+id/my_budget"
         android:title="Bütçe Oluştur"
-        android:icon="@drawable/ic_budget"/>
+
+        />
 
     <item
         android:id="@+id/add_expense"
         android:title="Harcama Ekle"
-        android:icon="@drawable/ic_add"/>
+
+       />
 
     <item
         android:id="@+id/my_expense"
-        android:title="Harcamalarım"
-        android:icon="@drawable/ic_expense"
+        android:title="Toplam Harcamalarım"
+
+
         />
 
     <item
         android:id="@+id/sign_out"
         android:title="Çıkış Yap"
-        android:icon="@drawable/ic_exit_to_app_black_24dp"
         />
 
         </menu>

@@ -17,7 +17,7 @@
         android:paddingTop="5dp"
         android:onClick="budgetCategoryClicked"
         android:paddingLeft="5dp"
-        android:textSize="19sp" />
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/constrictionAmount"
@@ -27,7 +27,7 @@
         android:hint="Kısıtlama Miktarın"
         android:inputType="number"
         android:drawableEnd="@drawable/ic_not_interested_black_24dp"
-        android:textSize="19sp"
+        android:textSize="18sp"
         />
 
     <Button

@@ -6,6 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".FeedActivity">
 
+    <TextView
+        android:id="@+id/empty_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:visibility="gone"
+        android:text="Henüz harcamanız yok. Eklemek için menüden harcama ekle kısmına tıklayın." />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="0dp"

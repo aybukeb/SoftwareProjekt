@@ -63,11 +63,7 @@ public class BudgetActivity extends AppCompatActivity {
             startActivity(intentToAdd);
 
         }
-        if(item.getItemId()==R.id.my_profil) {
-            Intent intentToProfil=new Intent(BudgetActivity.this,ProfilActivity.class);
-            startActivity(intentToProfil);
 
-        }
         if(item.getItemId()==R.id.sign_out) {
             firebaseAuth.signOut();
             Intent intentToSign=new Intent(BudgetActivity.this,SignActivity.class);

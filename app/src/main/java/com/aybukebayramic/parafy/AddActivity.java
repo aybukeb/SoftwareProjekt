@@ -83,11 +83,7 @@ public class AddActivity extends AppCompatActivity {
             startActivity(intentToAdd);
 
         }
-        if(item.getItemId()==R.id.my_profil) {
-            Intent intentToProfil=new Intent(AddActivity.this,ProfilActivity.class);
-            startActivity(intentToProfil);
 
-        }
         if(item.getItemId()==R.id.sign_out) {
             firebaseAuth.signOut();
             Intent intentToSign=new Intent(AddActivity.this,SignActivity.class);
@@ -111,10 +107,6 @@ public class AddActivity extends AppCompatActivity {
         catnameText=findViewById(R.id.catnameText);
         //uid=firebaseAuth.getCurrentUser().getUid();
 
-//
-//        Intent intent=getIntent();
-//        String catName=intent.getStringExtra("name");
-//        catnameText.setText(catName);
 
 
         calendar = (CalendarView) findViewById(R.id.calendarView);

@@ -3,6 +3,7 @@ package com.aybukebayramic.parafy;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,6 +13,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -70,11 +74,7 @@ public class FeedActivity extends AppCompatActivity {
             startActivity(intentToBudget);
 
         }
-        if(item.getItemId()==R.id.my_profil) {
-            Intent intentToProfil=new Intent(FeedActivity.this,ProfilActivity.class);
-            startActivity(intentToProfil);
 
-        }
         if(item.getItemId()==R.id.sign_out) {
             firebaseAuth.signOut();
             Intent intentToSign=new Intent(FeedActivity.this,SignActivity.class);
@@ -95,6 +95,7 @@ public class FeedActivity extends AppCompatActivity {
                 super.onCreate(savedInstanceState);
                 setContentView(R.layout.activity_feed);
 
+
                 userAmountfromFB=new ArrayList<>();
                 usercategoryNamesfromFB=new ArrayList<>();
                 userCommentfromFB=new ArrayList<>();
@@ -104,10 +105,10 @@ public class FeedActivity extends AppCompatActivity {
 
 
 
-
                 firebaseAuth=FirebaseAuth.getInstance();
                 firebaseFirestore=FirebaseFirestore.getInstance();
                 uid=firebaseAuth.getCurrentUser().getUid();
+
 
                 getDataFromFirestore();
 
@@ -117,7 +118,9 @@ public class FeedActivity extends AppCompatActivity {
                 DividerItemDecoration dividerItemDecoration=new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
                 dividerItemDecoration.setDrawable(getResources().getDrawable(R.drawable.recyclerview_divider));
                 recyclerView.addItemDecoration(dividerItemDecoration);
+
                 recyclerView.setAdapter(feedRecyclerAdapter);
+
 
 
     }
@@ -152,16 +155,14 @@ public class FeedActivity extends AppCompatActivity {
                                         } else {
                                             Toast.makeText(FeedActivity.this, "null", Toast.LENGTH_LONG).show();
                                         }
-                                        //useremailfromFB.add(userEmail);
 
                                         feedRecyclerAdapter.notifyDataSetChanged();
 
-
                                     }
+
                                 }
                             }
                         });
-
 
 
                 }

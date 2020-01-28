@@ -31,7 +31,7 @@ public class BudgetRecyclerAdapter extends RecyclerView.Adapter<BudgetRecyclerAd
 
     @Override
     public void onBindViewHolder(@NonNull BudgetHolder holder, int position) {
-        holder.constamount.setText(userconstAmountList.get(position));
+        holder.constamount.setText(userconstAmountList.get(position)+" TL Harcamalıyım");
         holder.constcategory.setText(userconstCategoryList.get(position));
 
     }

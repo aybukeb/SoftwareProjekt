@@ -15,7 +15,6 @@
         <activity android:name=".CreateBudgetActivity" />
         <activity android:name=".ExpensesActivity" />
         <activity android:name=".CategoryActivity" />
-        <activity android:name=".ProfilActivity" />
         <activity android:name=".BudgetActivity" />
         <activity android:name=".AddActivity" />
         <activity android:name=".FeedActivity" />

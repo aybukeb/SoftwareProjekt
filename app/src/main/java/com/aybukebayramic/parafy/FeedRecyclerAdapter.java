@@ -42,7 +42,7 @@ public class FeedRecyclerAdapter extends RecyclerView.Adapter<FeedRecyclerAdapte
     @Override
     public void onBindViewHolder(@NonNull ExpenseHolder holder, int position) {
         //viewholdera bağlanılınca ne yapılacak
-        holder.amountText.setText(amountList.get(position));
+        holder.amountText.setText(amountList.get(position)+" TL");
         holder.catnameText.setText(catnameList.get(position));
         holder.commentText.setText(commentList.get(position));
         holder.dateText.setText(dateList.get(position));

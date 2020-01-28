@@ -33,7 +33,7 @@ public class ExpenseRecyclerAdapter extends RecyclerView.Adapter<ExpenseRecycler
     public void onBindViewHolder(@NonNull catExpenseHolder holder, int position) {
         //rowların içinde neler olacak
         holder.rcycler_sumAmountCat.setText(usercatAmountList.get(position));
-        holder.rcycler_sumAmount.setText(userSumAmountList.get(position));
+        holder.rcycler_sumAmount.setText(userSumAmountList.get(position)+" TL");
 
 
 

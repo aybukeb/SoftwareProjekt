@@ -26,10 +26,23 @@ public class SecondCategoryActivity extends AppCompatActivity {
         categoryNames.add("Kira");
         categoryNames.add("Hediyeler");
         categoryNames.add("Ev Alışverişi");
+        categoryNames.add("Market Alışverişi");
         categoryNames.add("Sağlık");
         categoryNames.add("Spor");
         categoryNames.add("Eğlence");
         categoryNames.add("Hobi");
+        categoryNames.add("Eğitim");
+        categoryNames.add("Kırtasiye");
+        categoryNames.add("Ulaşım");
+        categoryNames.add("Seyahat");
+        categoryNames.add("Kredi");
+        categoryNames.add("Dışarıda Yemek");
+        categoryNames.add("Aksesuar");
+        categoryNames.add("Elektronik");
+        categoryNames.add("Bağış");
+        categoryNames.add("Dekorasyon");
+        categoryNames.add("Kişisel Bakım");
+        categoryNames.add("Diğer");
 
         ArrayAdapter arrayAdapter=new ArrayAdapter(SecondCategoryActivity.this,android.R.layout.simple_list_item_1,categoryNames);
         listView.setAdapter(arrayAdapter);
